@@ -6,7 +6,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Register | Skote - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -36,7 +36,7 @@
                             <div class="col-7">
                                 <div class="text-primary p-4">
                                     <h5 class="text-primary">Login</h5>
-                                    <p>Get your free Skote account now.</p>
+                                    <p>Get your account now.</p>
                                 </div>
                             </div>
                             <div class="col-5 align-self-end">
@@ -46,7 +46,7 @@
                     </div>
                     <div class="card-body pt-0">
                         <div>
-                            <a href="index.html">
+                            <a href="{{ url('/') }}">
                                 <div class="avatar-md profile-user-wid mb-4">
                                             <span class="avatar-title rounded-circle bg-light">
                                                 <img src="assets/images/logo.svg" alt="" class="rounded-circle" height="34">
@@ -58,8 +58,8 @@
                             <form class="form-horizontal" action="{{ route("login") }}" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="form-control" name="name" id="" placeholder="Enter username">
+                                    <label for="useremail">Email</label>
+                                    <input type="email" class="form-control" name="email" id="" placeholder="Enter email">
                                 </div>
 
                                 <div class="form-group">

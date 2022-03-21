@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('category_name');
             $table->string('brand_name');
             $table->float('product_price', 10,2);
-            $table->string('product_image');
-            $table->text('product_description');
-            $table->tinyInteger('status')->default(1)->comment('1 => Published, 0 => Unpublished');
+            $table->string('product_image')->nullable();
+            $table->longText('description');
+            $table->tinyInteger('status')->default(1)->comment('0 => Unpublished, 1 => Published');
             $table->timestamps();
         });
     }

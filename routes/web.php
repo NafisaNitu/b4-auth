@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+//use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,25 +16,18 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/product-details/{id}', [FrontController::class, 'productDetails'])->name('product-details');
 
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/my-calculator', [ProductController::class, 'calculator'])->name('my-calculator');
-//product crud
-Route::get('/add-product', [ProductController::class, 'index'])->name('add-product');
-Route::post('/new-product', [ProductController::class, 'newProduct'])->name('new-product');
-Route::post('/update-product', [ProductController::class, 'updateProduct'])->name('update-product');
-Route::get('/manage-product', [ProductController::class, 'manageProduct'])->name('manage-product');
-Route::get('/delete-product/{productId}', [ProductController::class, 'deleteProduct'])->name('delete-product');
-Route::get('/status-change/{productId}', [ProductController::class, 'productStatus'])->name('product-status');
-Route::get('/edit-product/{productId}', [ProductController::class, 'edit'])->name('product-edit');
-
-
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin.home.home');
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/add-product', [ProductController::class, 'addProduct'])->name('add-product');
+Route::middleware(['auth:sanctum', 'verified'])->post('/new-product', [ProductController::class, 'newProduct'])->name('new-product');
+Route::middleware(['auth:sanctum', 'verified'])->get('/manage-product', [ProductController::class, 'manageProduct'])->name('manage-product');
